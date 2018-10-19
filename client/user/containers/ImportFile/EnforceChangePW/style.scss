@@ -1,0 +1,33 @@
+.alert, .change-pw {
+  &__modal {
+    background: #161E22;
+    color: white;
+    border: 1px solid gray;
+    &--footer {
+      border: none;
+    }
+    &--header {
+      border-bottom: 1px solid gray;
+      button span{
+        color: white;
+      }
+      button:hover span{
+        color: white;
+      }
+    }
+    &--input {
+      width: 100%;
+      background: #9e9e9e;
+      border: none;
+    }
+  }
+}
+.submit-btn {
+  background: #fff;
+  color: #323232;
+  border: 1px solid #5D6164;
+}
+.cancel-btn {
+  background: #161e21;
+  color: #bcbcbc;
+}

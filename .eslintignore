@@ -1,0 +1,7 @@
+webpack*.js
+node_modules
+logs
+server
+webpack/*
+client/i18n/en.json
+client/i18n/th.json

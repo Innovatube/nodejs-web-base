@@ -1,0 +1,11 @@
+{
+  "time": "เวลา",
+  "distance": "ระยะทาง",
+  "speed": "ความเร็วเฉลี่ย",
+  "weight": "น้ำหนัก",
+  "volume": "ปริมาตร",
+  "route": "เส้นทาง",
+  "un_served": "Un-served Stop th",
+  "KM":"km th",
+  "KM/HR":"km/hr th"
+}

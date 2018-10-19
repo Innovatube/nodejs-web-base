@@ -1,0 +1,49 @@
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - develop
+        - release
+        - fix/circleci-deploy
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Setup Dependencies
+          command: npm install --quiet
+      - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: # run build
+          name: Run Build
+          command: |
+            npm run build
+      - run:
+          name: Setup AWS credentials
+          command: |
+            mkdir ~/.aws && printf "[profile eb-cli]\naws_access_key_id = ${AWS_ACCESS_KEY_ID}\naws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" > ~/.aws/config
+      - run:
+          name: Installing deployment dependencies
+          working_directory: /
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt-get install python-pip python-dev build-essential
+            sudo pip install --upgrade 'botocore>=1.11,<1.12'
+            sudo pip install 'urllib3==1.22'
+            sudo pip install 'awsebcli==3.14.2'
+      - run:
+          name: Deploying
+          command: |
+            if [[ "${CIRCLE_BRANCH}" == "develop" ]]; then
+              eb deploy NextyDev-env
+            elif [[ "${CIRCLE_BRANCH}" == "fix/circleci-deploy" ]]; then
+              eb deploy NextyDev-env
+            elif [[ "${CIRCLE_BRANCH}" == "release" ]]; then
+              eb deploy nexty-staging
+            fi

@@ -1,0 +1,23 @@
+/.idea
+/node_modules
+.env
+/logs
+/dist
+/client
+package-lock.json
+npm-debug.log
+*.sql
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+/database/testing/testdb.sqlite
+/documents/db/*
+/documents/db.mwb.bak
+/uploads/*
+/public/uploads
+
+#ignore css file in client folder
+/client/**/*.css
+.DSDS_Store

@@ -1,0 +1,32 @@
+@import '../../../scss/variable';
+$background-timeline-menu: #161E21;
+$background-timeline-content: #2A3338;
+.timeline {
+
+  &__menu {
+    width: 100%;
+    height: $menu-height;
+    background: $background-timeline-menu;
+  }
+  &__content {
+    overflow: auto;
+    width: 100%;
+    background: $background-timeline-content;
+    display: flex;
+    flex-direction: row;
+    height: 40%;
+  }
+  &__left {
+    width: 5%;
+  }
+}
+.bg_orange .progress-bar{
+  background: orange;
+}
+.bg_green .progress-bar{
+  background: green;
+}
+.bg_red .progress-bar{
+  background: red;
+}
+

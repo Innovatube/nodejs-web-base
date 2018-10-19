@@ -1,0 +1,22 @@
+body {
+  color: #ffffff;
+}
+.sidebar {
+  background-color: '#003333';
+}
+.pagination {
+  .page-link {
+    background-color: #282829;
+    border: 1px solid #43464a;
+  }
+}
+.modal-content {
+  background-color: #000000;
+}
+
+.modal-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+}

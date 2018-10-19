@@ -1,0 +1,750 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to learn how to write OpenAPI Specification
+
+schemes:
+- http
+- https
+basePath: /api/v1/
+
+tags:
+- name: auth
+  description: Everything about auth
+
+- name: user
+  description: Everything about user
+
+- name: fleet
+  description: Everything about fleet
+
+- name: stop
+  description: Everything about stop
+
+- name: vehicle
+  description: Everything about vehicle
+
+- name: job
+  description: Everything about job
+
+- name: logistics
+  description: Everything about logistics
+
+paths:
+  /auth/login:
+    post:
+      summary: Gets some persons
+      description: Returns a list containing all persons. The list supports paging.
+      tags:
+      - auth
+
+      consumes:
+      - multipart/form-data
+
+      produces:
+      - application/json
+
+      parameters:
+      - name: email
+        in: formData
+        description: Email to login
+        required: true
+        type: string
+
+      - name: password
+        in: formData
+        description: Password to login
+        required: true
+        type: string
+
+      responses:
+        200:
+          description: Success login
+          schema:
+            properties:
+              token:
+                type: string
+              email:
+                type: string
+              is_admin:
+                type: boolean
+              time_need_change_password:
+                type: integer
+              change_password_enforcement:
+                type: boolean
+
+  /user:
+    get:
+      tags:
+        - user
+      summary: Get user information
+      description: Get user information
+
+      security:
+      - Bearer: []
+
+      produces:
+      - application/json
+
+      responses:
+        200:
+          description: Success login
+          schema:
+            $ref: "#definitions/User"
+
+  /user/change-password:
+    put:
+      tags:
+      - user
+      summary: change user password
+      description: change user password
+      security:
+      - Bearer: []
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      parameters:
+      - name: current_password
+        in: formData
+        required: true
+        type: string
+      - name: new_password
+        in: formData
+        required: true
+        type: string
+
+      - name: confirm_new_password
+        in: formData
+        required: true
+        type: string
+
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/User"
+
+  /fleet:
+    get:
+      tags:
+      - fleet
+      summary: Get fleet information
+      description: Get fleet information
+
+      security:
+      - Bearer: []
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      parameters:
+        - name: job_id
+          in: query
+          description: Job ID
+          required: true
+
+      responses:
+        200:
+          description: Success
+          schema:
+            properties:
+              error: boolean,
+              data:
+                type: "object"
+                properties:
+                  fleet:
+                    $ref: "definitions.yaml#/Fleet"
+
+  /stop:
+    get:
+      tags:
+      - stop
+      summary: Get list stop given by job id
+      security:
+      - Bearer: []
+      produces:
+      - application/json
+      parameters:
+      - name: job_id
+        in: query
+        description: Job ID
+        required: true
+      responses:
+        200:
+          description: Success
+          schema:
+            properties:
+              error:
+                type: boolean
+              data:
+                type: object
+                properties:
+                  stops:
+                    type: array
+                    items:
+                      $ref: "definitions.yaml#/Stop"
+    put:
+      tags:
+      - stop
+      summary: Create routes from job
+      security:
+      - Bearer: []
+
+      consumes:
+      - application/json
+
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Created user object
+        required: true
+        schema:
+          type: object
+          properties:
+            job_id:
+              type: number
+            vehicle:
+              type: object
+              properties:
+                client_vehicle_id:
+                  type: string
+                lat_start:
+                  type: number
+                lng_start:
+                  type: number
+            stops:
+              type: array
+              items:
+                type: object
+                properties:
+                  client_stop_id:
+                    type: string
+                  seq:
+                    type: number
+
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/SuccessResponse"
+
+  /stop/changeSeq:
+    put:
+      tags:
+      - stop
+      summary: Change sequence of route
+      security:
+      - Bearer: []
+
+      consumes:
+      - application/json
+
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Sequence of route
+        required: true
+        schema:
+          type: object
+          properties:
+            job_id:
+              type: number
+            client_vehicle_id:
+              type: string
+            stops:
+              type: array
+              items:
+                type: object
+                properties:
+                  client_stop_id:
+                    type: string
+                  seq:
+                    type: number
+
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/SuccessResponse"
+
+  /stop/reset-seq:
+    put:
+      tags:
+      - stop
+      summary: Change sequence of route
+      security:
+      - Bearer: []
+
+      consumes:
+      - application/json
+
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Sequence of route
+        required: true
+        schema:
+          type: object
+          properties:
+            job_id:
+              type: number
+            client_vehicle_id:
+              type: string
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/SuccessResponse"
+
+  /stop/move:
+    put:
+      tags:
+      - stop
+      summary: Move stop between route
+      security:
+      - Bearer: []
+
+      consumes:
+      - application/json
+
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Move stops
+        required: true
+        schema:
+          type: object
+          properties:
+            job_id:
+              type: number
+            move_data:
+              type: array
+              items:
+                type: object
+                properties:
+                  client_vehicle_id:
+                    type: string
+                  stops:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        client_stop_id:
+                          type: string
+                        seq:
+                          type: number
+
+  /vehicle:
+    get:
+      tags:
+      - vehicle
+      summary: Get list vehicle given by job id
+      security:
+      - Bearer: []
+      produces:
+      - application/json
+      parameters:
+      - name: job_id
+        in: query
+        description: Job ID
+        required: true
+      responses:
+        200:
+          description: Success
+          schema:
+            properties:
+              error:
+                type: boolean
+              data:
+                type: object
+                properties:
+                  vehicles:
+                    type: array
+                    items:
+                      $ref: "definitions.yaml#/Stop"
+
+    put:
+      tags:
+      - vehicle
+      summary: Create routes from job
+      security:
+      - Bearer: []
+
+      consumes:
+      - application/json
+
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Create routes from job
+        required: true
+        schema:
+          type: object
+          properties:
+            job_id:
+              type: number
+            vehicle:
+              type: object
+              properties:
+                client_vehicle_id:
+                  type: string
+                lat_start:
+                  type: number
+                lng_start:
+                  type: number
+            stops:
+              type: array
+              items:
+                type: object
+                properties:
+                  client_stop_id:
+                    type: string
+                  seq:
+                    type: number
+
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/SuccessResponse"
+
+  /logistics/get-status:
+    post:
+      tags:
+      - logistics
+      summary: Get status of job
+      security:
+      - Bearer: []
+
+      consumes:
+      - multipart/form-data
+
+      produces:
+      - application/json
+      parameters:
+      - name: job_id
+        in: formData
+        description: Job ID
+        required: true
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/SuccessResponse"
+
+  /logistics/upload:
+    post:
+      tags:
+      - logistics
+      summary: Upload file, genearl or master template
+      security:
+      - Bearer: []
+
+      consumes:
+      - multipart/form-data
+
+      produces:
+      - application/json
+      parameters:
+      - name: file
+        in: formData
+        type: file
+        description: Excel file.
+
+      - name: template_type
+        in: formData
+        description: Template type must be general or master
+        required: true
+        type: string
+
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/SuccessResponse"
+
+  /logistics/create-job:
+    post:
+      tags:
+      - logistics
+      summary: Create job from file ID
+      security:
+      - Bearer: []
+
+      consumes:
+      - multipart/form-data
+
+      produces:
+      - application/json
+      parameters:
+      - name: file_id
+        in: formData
+        type: number
+        description: Job id
+        required: true
+
+      - name: date_depart
+        in: fromData
+        type: string
+        description: Date start to depart
+        required: true
+
+      - name: use_toll
+        in: fromData
+        type: number
+        description: Use toll, value 1 or 0
+        required: true
+
+      - name: use_time_routing_mode
+        in: fromData
+        type: number
+        description: Value 1 or 0
+        required: true
+
+      - name: use_balance_vehicle_mode
+        in: fromData
+        type: number
+        description: Value 0 to 4
+        required: true
+
+      - name: load_factor
+        in: fromData
+        type: number
+        description: maximum capacity
+        required: false
+
+      - name: distance_leg_limit
+        in: fromData
+        type: number
+        description: Limit distance for one leg
+        required: false
+
+      - name: leg_limit
+        in: fromData
+        type: number
+        description: Limit number of legs
+        required: false
+
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/SuccessResponse"
+
+  /logistics/cancel-job:
+    post:
+      tags:
+      - logistics
+      summary: cancel job
+      security:
+      - Bearer: []
+
+      consumes:
+      - multipart/form-data
+
+      produces:
+      - application/json
+      parameters:
+      - name: job_id
+        in: formData
+        required: true
+        type: string
+
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/SuccessResponse"
+
+#  /logistics/create-routes:
+#    post:
+#      tags:
+#      - logistics
+#      summary: Create routes from job
+#      security:
+#      - Bearer: []
+#
+#      consumes:
+#      - multipart/form-data
+#
+#      produces:
+#      - application/json
+#      parameters:
+#      - name: job_id
+#        in: formData
+#        required: true
+#        type: string
+#
+#      responses:
+#        200:
+#          description: Success
+#          schema:
+#            $ref: "#definitions/SuccessResponse"
+#
+#  /logistics/edit-routes:
+#    post:
+#      tags:
+#      - logistics
+#      summary: edit routes from job
+#      security:
+#      - Bearer: []
+#
+#      consumes:
+#      - multipart/form-data
+#
+#      produces:
+#      - application/json
+#      parameters:
+#      - name: job_id
+#        in: formData
+#        required: true
+#        type: string
+#
+#      responses:
+#        200:
+#          description: Success
+#          schema:
+#            $ref: "#definitions/SuccessResponse"
+
+  /job/{jobId}:
+    get:
+      tags:
+      - job
+      summary: Get job information
+      security:
+      - Bearer: []
+      produces:
+      - application/json
+      parameters:
+      - name: jobId
+        in: path
+        description: Job ID
+        required: true
+        type: integer
+      responses:
+        200:
+          description: Success
+          schema:
+            properties:
+              error:
+                type: boolean
+              data:
+                type: object
+                properties:
+                  jobs:
+                    type: array
+                    items:
+                      $ref: "definitions.yaml#/Job"
+
+  /job/{id}:
+    put:
+      tags:
+      - job
+      summary: Update Job
+      description: Update job
+      security:
+      - Bearer: []
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: Job ID
+        required: true
+        type: integer
+
+      - name: date_depart
+        in: formBody
+        type: string
+
+      - name: use_toll
+        in: formBody
+        type: number
+
+      - name: use_time_routing_mode
+        in: formBody
+        type: number
+
+      - name: use_balance_vehicle_mode
+        in: formBody
+        type: number
+
+      - name: load_factor
+        in: formBody
+        type: number
+
+      - name: distance_leg_limit
+        in: formBody
+        type: number
+
+      - name: leg_limit
+        in: formBody
+        type: number
+
+      - name: use_constraints
+        in: formBody
+        type: number
+
+      - name: use_system_zone
+        in: formBody
+        type: number
+
+      - name: balance_by
+        in: formBody
+        type: number
+
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#definitions/Job"
+
+definitions:
+  User:
+    $ref: "./definitions.yaml#/User"
+
+  Fleet:
+    $ref: "./definitions.yaml#/Fleet"
+
+  Plan:
+    $ref: "./definitions.yaml#/Plan"
+
+  Leg:
+    $ref: "./definitions.yaml#/Leg"
+
+  Stop:
+    $ref: "./definitions.yaml#/Stop"
+
+  Vehicle:
+    $ref: "./definitions.yaml#/Vehicle"
+
+  Job:
+    $ref: "./definitions.yaml#/Job"
+
+  SuccessResponse:
+    properties:
+      error:
+        type: boolean
+      message:
+        type: string
+
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header

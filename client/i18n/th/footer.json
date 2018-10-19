@@ -1,0 +1,9 @@
+{
+    "master_plan":"แผนเส้นทางประจำ (มาสเตอร์)",
+    "to_report": "ใบงานขนส่ง",
+    "change_file_label": "เปลี่ยนไฟล์ ",
+    "change_file_description": "วางแผนเส้นทางใหม่ ",
+    "re_route_label": "จัดเส้นทางใหม่ ",
+    "re_route_description": "เปลี่ยนการตั้งค่าของของแผน ",
+    "export": "นำแผนออกใช้"
+}

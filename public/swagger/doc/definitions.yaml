@@ -1,0 +1,270 @@
+User:
+  properties:
+    id:
+      type: number
+    first_name:
+      type: string
+    last_name:
+      type: string
+    name:
+      type: string
+    email:
+      type: string
+    status:
+      type: string
+    is_admin:
+      type: string
+    change_password_enforcement:
+      type: boolean
+    company:
+      type: string
+    password_expired_days:
+      type: string
+    created_at:
+      type: string
+    updated_at:
+      type: string
+
+Fleet:
+  properties:
+    id:
+      type: number
+    job_id:
+      type: number
+    long_running_job_id:
+      type: number
+    status:
+      type: string
+    description:
+      type: string
+    total_wait_time:
+      type: string
+    total_eta:
+      type: number
+    total_time:
+      type: number
+    total_distance:
+      type: number
+    total_service_time:
+      type: number
+    total_toll_fee:
+      type: number
+    total_volume:
+      type: number
+    total_weight:
+      type: number
+    unserved:
+      type: string
+    created_at:
+      type: string
+    updated_at:
+      type: string
+    plans:
+      type: array
+      items:
+        $ref: "#Plan"
+
+Plan:
+  properties:
+    id:
+      type: number
+    fleet_id:
+      type: number
+    client_vehicle_id:
+      type: string
+    time_start:
+      type: string
+    time_end:
+      type: string
+    num_of_route:
+      type: number
+    total_wait_time:
+      type: number
+    total_eta:
+      type: number
+    total_time:
+      type: number
+    total_distance:
+      type: number
+    total_service_time:
+      type: number
+    total_toll_fee:
+      type: number
+    total_volume:
+      type: number
+    total_weight:
+      type: number
+    created_at:
+      type: string
+    updated_at:
+      type: string,
+    legs:
+      type: array
+      items:
+        $ref: "#Leg"
+
+Leg:
+  properties:
+    id:
+      type: number
+    seq:
+      type: number
+    plan_id:
+      type: number
+    start_id:
+      type: string
+    stop_id:
+      type: string
+    arrive_time:
+      type: string
+    finish_time:
+      type: string
+    wait_time:
+      type: number
+    eta:
+      type: number
+    distance:
+      type: number
+    toll_fee:
+      type: number
+    volume:
+      type: number
+    route:
+      type: string
+    created_at:
+      type: string
+    updated_at:
+      type: string
+
+Stop:
+  properties:
+    id:
+      type: number
+    client_stop_id:
+      type: string
+    lat:
+      type: string
+    lng:
+      type: string
+    service_time:
+      type: number
+    time_start:
+      type: string
+    time_end:
+      type: string
+    volume:
+      type: number
+    weight:
+      type: number
+    dropoffs:
+      type: number
+    type:
+      type: string
+    seq:
+      type: number
+    priority:
+      type: string
+    zone:
+      type: string
+    product_id:
+      type: string
+    name:
+      type: string
+    address:
+      type: string
+    tel:
+      type: string
+    client_vehicle_id:
+      type: string
+    handled:
+      type: string
+    created_at:
+      type: string
+    updated_at:
+      type: string
+    job_id:
+      type: number
+
+Vehicle:
+  properties:
+    id:
+      type: number
+    client_vehicle_id:
+      type: string
+    lat_start:
+      type: number
+    lng_start:
+      type: number
+    lat_end:
+      type: number
+    lng_end:
+      type: number
+    time_start:
+      type: string
+    time_end:
+      type: string
+    speed_limit:
+      type: number
+    break_time_start:
+      type: string
+    break_time_end:
+      type: string
+    volume:
+      type: number
+    weight:
+      type: number
+    type:
+      type: string
+    priority:
+      type: string
+    time_to_leave:
+      type: string
+    reverse_delivery:
+      type: string
+    job_id:
+      type: number
+    created_at:
+      type: string
+    updated_at:
+      type: string
+
+Job:
+  properties:
+    id:
+      type: number
+    status:
+      type: string
+    date_depart:
+      type: string
+    use_toll:
+      type: number
+    use_time_routing_mode:
+      type: number
+    use_balance_vehicle_mode:
+      type: number
+    load_factor:
+      type: number
+    use_system_zone:
+      type: number
+    balance_by:
+      type: number
+    distance_leg_limit:
+      type: number
+    leg_limit:
+      type: number
+    space_offset:
+      type: number
+    use_constraints:
+      type: number
+    type:
+      type: string
+    user_id:
+      type: number
+    file_id:
+      type: number
+    long_running_job_id:
+      type: number
+    created_at:
+      type: string
+    updated_at:
+      type: string

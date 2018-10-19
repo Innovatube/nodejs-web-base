@@ -1,0 +1,16 @@
+@import'../../scss/variable';
+.user-list{
+  .btn-sm {
+    padding: 0.15rem 0.05rem;
+    background: transparent;
+    border-color: #ffffff;
+    &:hover {
+      color: #fff;
+      background-color: #000000;
+      border-color: #1985ac;
+    }
+  }
+}
+.w-85{
+  width: $width-85-percent !important;
+}

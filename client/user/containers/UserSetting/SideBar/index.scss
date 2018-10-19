@@ -1,0 +1,13 @@
+@import'../../../scss/variable';
+
+.sidebar {
+  &__item {
+    background: $bg-user-setting-sidebar;
+    padding: 10px;
+    text-align: left;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}

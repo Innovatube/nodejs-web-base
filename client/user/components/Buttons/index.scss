@@ -1,0 +1,11 @@
+.btn {
+  border-radius: 3px;
+  &__black {
+    background: #022f37;
+    color: white;
+    border: 1px solid #5D6164;
+  }
+  &__white {
+    background: #FFFFFF,
+  }
+}

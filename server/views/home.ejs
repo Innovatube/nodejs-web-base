@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Condao</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="dns-prefetch" href="https://use.fontawesome.com/">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com/">
+  <%if (env !== 'local') { %>
+    <link rel="stylesheet" href="<%= assets%>/css/app.css?v=<%= appVer%>"/>
+  <% } %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Qh01pbrnGst0uyD9dMw4eSqiglYMtv0&libraries=geometry"></script>
+  <script>
+  window.app = {
+    baseUrl: '<%= baseUrl%>',
+    title: 'Nexty',
+    apiUrl: '<%= baseUrl%>api/v1'
+  };
+  </script>
+</head>
+<body>
+<div id="root"></div>
+<script src="<%= assets%>/app.client.bundle.js?v=<%= appVer%>"></script>
+</body>
+</html>

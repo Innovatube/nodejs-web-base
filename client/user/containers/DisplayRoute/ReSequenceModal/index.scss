@@ -1,0 +1,32 @@
+@import '../../../scss/variable';
+
+.modal.show .modal-dialog {
+  transform: none;
+}
+
+.resequence {
+  &__modal {
+    width: 400px;
+  }
+  &__content {
+    background: #1b2225;
+    color: white;
+  }
+  &__p {
+    font-size: 14px !important;
+    margin: 0;
+  }
+  &_body {
+    padding-right: 0rem !important;
+  }
+
+  &__item {
+    background: $display-route-side-bar-bg;
+    color: white;
+    padding: 8px 0px 8px 8px;
+    height: 100%;
+  }
+}
+.close{
+  color: white;
+}

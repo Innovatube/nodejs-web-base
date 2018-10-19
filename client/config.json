@@ -1,0 +1,80 @@
+{
+  "upload_file": {
+    "password_alert": {
+      "label": "Password protected file",
+      "description": "Password protected file"
+    },
+    "file_mode": {
+      "label": "Planning mode",
+      "description": "Planning mode"
+    },
+    "general_mode": {
+      "label": "Generate new plan (new_plan_template)",
+      "description": "Generate new plan (new_plan_template)"
+    },
+    "master_mode": {
+      "label": "Generate plan, keeping existing assignment (master_plan_template)",
+      "description": "Generate plan, keeping existing assignment (master_plan_template)"
+    }
+  },
+  "route_setting": {
+    "departure_date": {
+      "label": "Departure Date",
+      "description": "Departure Date"
+    },
+    "toll_ways": {
+      "label": "Use toll roads",
+      "description": "Use toll roads"
+    },
+    "calculate_mode": {
+      "label": "Route preference",
+      "description": "Route preference"
+    },
+    "shortest_time": {
+      "label": "Avoid traffic",
+      "description": "Avoid traffic"
+    },
+    "shortest_distance": {
+      "label": "Shorter distance",
+      "description": "Shorter distance"
+    },
+    "load_factor": {
+      "label": "Loading efficiency",
+      "description": "Loading efficiency"
+    },
+    "planning_mode": {
+      "label": "Planning mode",
+      "description": "Planning mode"
+    },
+    "balance_mode": {
+      "label": "Utilize all vehicles",
+      "description": "Utilize all vehicles"
+    },
+    "basic_optimal": {
+      "label": "Minimize vehicles used",
+      "description": "Minimize vehicles used"
+    },
+    "use_zone": {
+      "label": "Use zone based planning",
+      "description": "Use zone based planning"
+    },
+    "drop_to_drop": {
+      "label": "Drop to drop distance limit (km)",
+      "description": "Drop to drop distance limit (km)"
+    },
+    "vehicle_leg": {
+      "label": "Maximum drop per vehicle",
+      "description": "Maximum drop per vehicle"
+    }
+  },
+  "timeline": {
+    "change_file": {
+      "label": "Change File",
+      "description": "Plan new route"
+    },
+    "re_route": {
+      "label": "Re-Route",
+      "description": "Change planning settings"
+    }
+  }
+}

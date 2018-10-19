@@ -1,0 +1,104 @@
+@import'../../scss/variable';
+
+.user-setting {
+  width: 100%;
+  height: 100%;
+  background: $bg-user-setting-content;
+  &__section {
+    width: 100%;
+    // height: calc(100% - #{$header-height} + 1px);
+    min-height: calc(100% - #{$header-height});
+    display: flex;
+    &--sidebar {
+      min-height: 100%;
+      margin: 0;
+      flex-basis: 236px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      background: $bg-user-setting-sidebar;
+      color: white;
+      padding: 10px;
+      border-right: 5px solid $border-user-setting;
+      border-top: 5px solid $border-user-setting;
+      border-bottom: 5px solid $border-user-setting;
+    }
+    &--content {
+      min-height: 100%;
+      flex: 1 1 400px;
+      background: $bg-user-setting-content;
+      padding: 10px 20px 20px 20px;
+      border-top: 5px solid $border-user-setting;
+      border-bottom: 5px solid $border-user-setting;
+    }
+  }
+}
+.content {
+  &__title {
+    color: white;
+    height: 25px;
+    overflow: hidden;
+    border-bottom: 1px solid #C0C0C0;
+    p {
+      margin: 0;
+    }
+  }
+  &__section {
+    display: flex;
+    flex-direction: column;
+  }
+  &__avatar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  &__form {
+    margin-top: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form {
+      width: 80%;
+    }
+    p {
+      margin: 0;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 1rem;
+      outline: none;
+      border: none;
+      padding: 5px;
+    }
+    
+  }
+}
+
+.group-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  &__item {
+    margin-left: 10px;
+    width: 100px;
+    outline: none;
+    border: none;
+    padding: 1px 0 1px 0;
+    border-radius: 2px;
+  }
+  
+}
+.button--black {
+  border: 1px solid white;
+  background: #444444;
+  color: white;
+}

@@ -1,0 +1,13 @@
+{
+  "app_name": "TSQUARE LOGISTICS",
+  "re_sequence": "Re - sequence",
+  "drops": "Drops",
+  "service": "Service",
+  "service_time": "Service time",
+  "min": "min",
+  "move": "Move",
+  "UNSERVED": "UNSERVED",
+  "volume": "volume",
+  "weight": "weight",
+  "KM":"km"
+}

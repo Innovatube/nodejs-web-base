@@ -1,0 +1,11 @@
+{
+  "time": "Time",
+  "distance": "Distance",
+  "speed": "Speed",
+  "weight": "Weight",
+  "volume": "Volume",
+  "route": "Route",
+  "un_served": "Un-served Stop",
+  "KM":"km",
+  "KM/HR":"km/hr"
+}

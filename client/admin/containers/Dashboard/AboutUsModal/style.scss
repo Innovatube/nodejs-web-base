@@ -1,0 +1,65 @@
+.width{
+    width: 600px;
+}
+.modals_footer{
+    justify-content: center;
+}
+.logo{
+    width: 100%;
+    justify-content:  center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.logo p{
+    margin-top: 15px;
+    font-size: 14px;
+}
+.logo img{
+    width: 30%;
+    display: block;
+}
+.text_about{
+    width: 100%;
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.text p{
+    display: block;
+    margin-bottom: 0px !important;
+    font-size: 16px;
+}
+.text a{
+    text-decoration: underline !important;
+}
+.modals_footer{
+    border-top: none !important;  
+    background-color: white !important;
+    color: black !important;
+}
+.modals_header{
+    padding: 9px !important;
+    border-bottom:8px solid #022f37 !important;
+    background-color: white !important;
+    color: black !important;
+}
+
+.btn-aboutUs {
+    background: #022f37;
+    color: white;
+}
+.modals_footer .btn{
+    padding: .375rem 2.0rem !important;
+}
+.modals__center{
+    justify-content: center !important;
+    border-top: none !important;
+    
+}
+.modals__background{
+    background-color: white !important;
+    color: black !important;
+}

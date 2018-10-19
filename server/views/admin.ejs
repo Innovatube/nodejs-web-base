@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin nexty</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="dns-prefetch" href="https://use.fontawesome.com/">
+  <%if (env !== 'local') { %>
+    <link rel="stylesheet" href="<%= assets%>/css/app.css?v=<%= appVer%>"/>
+  <% } %>
+  <script>
+  window.app = {
+    baseUrl: '<%= baseUrl%>',
+    title: 'Admin Nexty',
+    apiUrl: '<%= baseUrl%>api/admin'
+  };
+  </script>
+</head>
+<body>
+<div id="root"></div>
+<script src="<%= assets%>/admin.client.bundle.js?v=<%= appVer%>"></script>
+</body>
+</html>

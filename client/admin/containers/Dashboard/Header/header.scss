@@ -1,0 +1,19 @@
+$import-file-background: #2A3338;
+.bg-black {
+  background: $import-file-background;
+}
+.bg-white {
+  a {
+    color: #000000;
+  }
+}
+.Logo{
+  color: #000000;
+  display: inline-block;
+  padding-top: .335938rem;
+  padding-bottom: .335938rem;
+  margin-right: 1rem;
+  font-size: 1.09375rem;
+  line-height: inherit;
+  white-space: nowrap;
+}

@@ -1,0 +1,173 @@
+.radio {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  height: 20px;
+  cursor: pointer;
+  user-select: none;
+  &--white {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 4;
+  }
+  &--white:checked ~ &--marker {
+    background: black;
+  }
+  &--white:checked ~ &--marker:after {
+    display: block;
+  }
+  &--marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: black;
+    border: 1px solid white;
+    z-index: 1;
+    &:after { 
+      position: absolute;
+      content: "";
+      top: 4px;
+      left: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: white;
+      display: none;
+    }
+  }
+}
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  height: 20px;
+  cursor: pointer;
+  &--white {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 4;
+  }
+  &--white:checked ~ &--marker {
+    background: #868A8B;
+  }
+  &--white:checked ~ &--marker:after {
+    display: block;
+  }
+  &--marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #868A8B;
+    border-radius: 1px;
+    z-index: 1;
+    &:after { 
+      position: absolute;
+      content: "";
+      top: 2px;
+      left: 6px;
+      width: 7px;
+      height: 12px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+      display: none;
+    }
+  }
+}
+
+
+.route-setting{
+  &__slider {
+    width: 80%;
+    &:hover {
+      outline: none;
+    }
+  }
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid white;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+  border: 1px solid white;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  border: 1px solid white;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
+}
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: gray; /* Otherwise white in Chrome */
+  height: 7px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: white; 
+  border-color: transparent;
+  color: transparent;
+}
+.react-datepicker-popper{
+  z-index: 999;
+}
+.input-cal{
+  position: relative;
+  width: 100%;
+}
+.icon-cal{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: black;
+}
+.react-datepicker-wrapper{
+  width: 100%;
+}
+.react-datepicker__input-container{
+  width: 100%
+}

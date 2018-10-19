@@ -1,0 +1,9 @@
+{
+    "master_plan":"Master Plan",
+    "to_report": "To Report",
+    "change_file_label": "Change File",
+    "change_file_description": "Plan new route",
+    "re_route_label": "Re-Route",
+    "re_route_description": "Change planning settings",
+    "export": "Export"
+}

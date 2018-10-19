@@ -1,0 +1,15 @@
+{
+    "app_name": "TSQUARE LOGISTICS en",
+    "admin_control": "ไปหน้าแอดมิน",
+    "my_profile": "ข้อมูลของฉัน",
+    "drop": "จุดรับส่ง",
+    "service_time": "เวลาที่ใช้ ณ จุดรับส่ง",
+    "hour": "ช่วงโมง",
+    "duration": "ระยะเวลา",
+    "volume": "ปริมาตร",
+    "weight": "น้ำหนัก ",
+    "drag_and_drop": "ลากและวาง",
+    "start": "เริ่ม",
+    "KM":"km th",
+    "KM/HR":"km/hr th"
+}

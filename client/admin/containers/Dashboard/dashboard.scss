@@ -1,0 +1,30 @@
+@import'../../scss/variable';
+.nav {
+  &__home {
+    margin: 0;
+    padding: 0;
+  }
+  &__link--blue {
+    color: #337ab7;
+  }
+}
+
+.sidebar {
+  background: $bg-user-setting-sidebar;
+  border-top: 5px solid $border-user-setting;
+  .sidebar-nav {
+    width: $sidebar-with;
+    .nav {
+      width: $sidebar-with;
+    }
+  }
+}
+.main {
+  background: $bg-user-setting-content;
+  border-bottom: 5px solid $border-user-setting;
+  border-top: 5px solid $border-user-setting;
+  .container-fluid {
+    padding: 10px;
+    background: $bg-user-setting-content;
+  }
+}

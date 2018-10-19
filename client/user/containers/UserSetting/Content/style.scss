@@ -1,0 +1,14 @@
+.change_password {
+    &__input {
+        width: 50% !important;
+        margin-bottom: 1rem;
+        outline: none;
+        border: 1px solid !important;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: gray !important; 
+        &::placeholder{
+            color: white;
+        }
+    }
+}
