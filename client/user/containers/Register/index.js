@@ -71,7 +71,7 @@ export default class CreatePage extends React.Component {
         submitting: true,
         errors: null,
       });
-      const result = await authApi.create({
+      const result = await authApi.CreatePage({
         name: data.name,
         email: data.email,
         password: data.password,
@@ -112,9 +112,7 @@ export default class CreatePage extends React.Component {
         <div className="login__background">
           <img alt="background" src="https://cdn-images-1.medium.com/max/1600/1*yxyVk32O-W9gboC643Q15w.png" />
         </div>
-        <form
-          className="login__container"
-        >
+        <form className="login__container" onSubmit={this.create}>
           <div className="justify-content-center row">
             <div className="col-md-5">
               <div className="card-group">
@@ -188,15 +186,27 @@ export default class CreatePage extends React.Component {
                         />
                       </div>
                     </div>
-                    <div>
-                      <button
-                        type="submit"
-                        className="btn btn-success btn-block"
-                        onClick={this.create}
-                        disabled={submitting}
-                      > Create Account
-                      </button>
-                    </div>
+                    {!this.state.showSuccessMessage && (
+                      <div>
+                        <button
+                          type="submit"
+                          className="btn btn-success btn-block"
+                          disabled={submitting}
+                        > Create Account
+                        </button>
+                      </div>
+                    )}
+                    {this.state.showSuccessMessage && (
+                      <div>
+                        <button
+                          type="submit"
+                          className="btn btn-success btn-block"
+                          onClick={() => this.props.history.push('/login')}
+                          disabled={submitting}
+                        > Create Account
+                        </button>
+                      </div>
+                    )}
                   </div>
                   {errors && errors.message && <Errors errors={errors} />}
                 </div>

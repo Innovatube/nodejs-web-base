@@ -33,7 +33,6 @@ export const validatePassword = (password) => {
   return errors;
 };
 
-
 export const validateResetPassword = (data) => {
   const errors = [];
   if (data.password.length === 0 || data.confirmPassword.length === 0) {
@@ -47,9 +46,9 @@ export const validateResetPassword = (data) => {
 
 export const validateConfirmPassword = (data) => {
   const errors = [];
-  if (data.password === data.cfpassword) {
+  if (data.password !== data.cfpassword) {
     errors.push(string.required('confirmPassword'));
-  } else if (data.password !== data.cfpassword) {
+  } else if (data.password === data.cfpassword) {
     errors.push(string.confirmPassword());
   }
 

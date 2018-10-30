@@ -9,6 +9,7 @@ export const validateEmail = (email) => {
     const result = regexPattern.test(String(email).toLowerCase());
     if (result !== true) {
       errors.push(string.email());
+      console.log(result);
     }
   }
 
